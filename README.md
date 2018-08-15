@@ -36,7 +36,7 @@ To run on docker
    docker run --name mydemoapp -p 8080:8080 -p 4567:4567 demoapp
 End of ToDo 2  
 
-ToDo 3: Add and modify for using docker compose
+&#x1F4D9; ToDo 3: Add and modify for using docker compose
    
 If you want to just run the app in docker run docker compose from the /docker directory
 	docker-compose build
