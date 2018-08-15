@@ -54,8 +54,8 @@
             <configuration>
 							<inputSpec>src/main/resources/swagger/swagger.yaml</inputSpec>
 							<invokerPackage>demo</invokerPackage>
-							<apiPackage>gen.demo.web</apiPackage>
-							<modelPackage>gen.demo.model</modelPackage>
+							<apiPackage>demo.web</apiPackage>
+							<modelPackage>demo.model</modelPackage>
 							<generateApiTests>false</generateApiTests>
 							<generateModelTests>false</generateModelTests>
 							<generateApis>true</generateApis>

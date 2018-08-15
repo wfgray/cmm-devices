@@ -1,6 +1,0 @@
-# Swagger Codegen Ignore
-/README.md
-/build.*
-docs/
-src/
-!src/main/java/demo/*
