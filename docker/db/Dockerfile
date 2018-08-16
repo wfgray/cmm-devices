@@ -1,5 +1,5 @@
 FROM couchbase
 COPY configure-server.sh /opt/couchbase
 RUN ["chmod", "+x", "/opt/couchbase/configure-server.sh"]
-COPY pclines.json /
+COPY Device.json /
 CMD ["/opt/couchbase/configure-server.sh"]
