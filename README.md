@@ -28,6 +28,8 @@ In the src/main/resources/application.properties file set the couchbase.nodes to
 	
 To run outside of docker you do need the database started
     mvn package && java -jar target/demo2-0.1.0.jar
+    OR
+    mvn clean package spring-boot:run
 
 To build docker container for the app, run the build command from docker/app
      docker build -t demoapp .
