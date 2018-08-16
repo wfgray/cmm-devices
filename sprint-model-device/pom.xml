@@ -55,7 +55,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>src/main/resources/swagger/swagger.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/resources/swagger/swagger.yaml</inputSpec>
                             <invokerPackage>sprint.rest.api.device</invokerPackage>
                             <apiPackage>sprint.rest.api.device.web</apiPackage>
                             <modelPackage>sprint.rest.api.device.model</modelPackage>
