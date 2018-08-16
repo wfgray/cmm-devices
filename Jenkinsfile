@@ -4,15 +4,8 @@ pipeline{
 	stages {
 		stage('Compile Stage'){
 			steps {
-				withMaven(maven : 'maven_3_5_4'){
-					sh 'mvn clean compile'
-				}
-			}
-		}
-		stage('Deployment Stage'){
-			steps {
-				withMaven('maven_3_5_4'){
-					sh 'mvn clean install'
+				withMaven(maven : 'maven-3.5.4'){
+					sh 'mvn clean'
 				}
 			}
 		}
