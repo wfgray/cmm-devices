@@ -55,6 +55,47 @@ ToDo 4: We have added a parent pom
     3. Update this readme to include how to build all or only parts of the app
         mvn clean compile  and mvn package as examples
 Emd of ToDo 4:
+
+Run the Web app
+To run the web app locally you have to use yarn to start the server and the react app
+Start the server 
+    yarn start
+Start the react app
+    yarn start
+
+Build and tag the Docker image:
+
+$ docker build -t web-app .
+Then, spin up the container once the build is done:
+
+$ docker run -it \
+  -v ${PWD}:/usr/src/app \
+  -v /usr/src/app/node_modules \
+  -p 3000:3000 \
+  --rm \
+  web-app
+Open your browser to http://localhost:3000/ and you should see the app. Try making a change to the App component within your code editor. You should see the app hot-reload. Kill the server once done.
+
+To Do: Add the following to docker compose
+Want to use Docker Compose? Add a docker-compose.yml file to the project root:
+
+version: '3.5'
+
+services:
+
+  sample-app:
+    container_name: sample-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+End of To Do: Add the following to docker compose
 	
 Note: I'm leaving this as it will come in handy 
     1. Run this in Jenkins Implement a nightly build against the dev branch
