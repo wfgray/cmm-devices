@@ -20,7 +20,7 @@
        <repository>
          <id>internal.repo</id>
          <name>Internal repo</name>
-         <url>file:///opt</url>
+         <url>file:///opt/dockerSnapshot</url>
        </repository>
    </distributionManagement>
     <!-- If test execution is skipped then also skip test compilation -->
