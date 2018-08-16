@@ -1,6 +1,9 @@
-demo2
+Devices
 ===============
 Devices microservice uses a couchbase database and a springboot app
+
+Build the project from the root
+    &#x1F539; mvn clean install -Dmaven.test.skip.exec=true
 
 ToDo 1: Modify for the devices database
 To run database only
