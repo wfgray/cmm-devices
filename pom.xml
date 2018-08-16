@@ -20,7 +20,7 @@
        <repository>
          <id>internal.repo</id>
          <name>Internal repo</name>
-         <url>file:///home/jenkins</url>
+         <url>file:///opt</url>
        </repository>
    </distributionManagement>
     <!-- If test execution is skipped then also skip test compilation -->
