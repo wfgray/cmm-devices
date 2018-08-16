@@ -148,11 +148,11 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--Docker maven plugin  -->
+            <!--Docker maven plugin changes -->
             <plugin>
       			<groupId>com.spotify</groupId>
 			      <artifactId>docker-maven-plugin</artifactId>
-			      <version>1.3.6</version>
+			      <version>0.4.11</version>
 			      <configuration>
 			        <imageName>144.229.218.18:5000/cmm</imageName>
 			        <baseImage>java</baseImage>
