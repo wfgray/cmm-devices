@@ -31,8 +31,7 @@ set -m
 
     # Setup RBAC user using CLI
     couchbase-cli user-manage -c db:8091 --username $COUCHBASE_ADMINISTRATOR_USERNAME --password $COUCHBASE_ADMINISTRATOR_PASSWORD \
-    --set --rbac-username $COUCHBASE_RBAC_USERNAME --rbac-password $COUCHBASE_RBAC_PASSWORD --rbac-name $COUCHBASE_RBAC_NAME \        
-		--roles admin --auth-domain local
+    --set --rbac-username $COUCHBASE_RBAC_USERNAME --rbac-password $COUCHBASE_RBAC_PASSWORD --rbac-name $COUCHBASE_RBAC_NAME --roles admin --auth-domain local
 		
 	sleep 15
 
