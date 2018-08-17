@@ -1,0 +1,28 @@
+
+#newDevice{
+    font-weight: bold;
+    margin: 0px 0px 2px 45px;
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Permanent Marker', cursive;
+}
+
+#mainDevice{
+    font-weight: bold;
+    color: aliceblue;
+    font-size: 20px;
+    font-family: 'Permanent Marker', cursive;
+
+}
+
+#values {
+    font-family: 'Marck Script', cursive;
+    font-size: 20px;
+
+  }
+
+  #widgetHeading{ 
+        margin: -30px 0px 25px 26%;
+        font-size: 40px;
+         font-family: 'Marck Script', cursive;
+  }
