@@ -23,6 +23,7 @@ tmp/**/*
 local.properties
 /build
 .loadpath
+.vscode/
 
 
 # You may want to remove the sharp symbols here if you are using Maven 
