@@ -1,10 +1,10 @@
 Devices
 ========
 Running Couchbase DB through docker container
-===============================================
+
 1.The docker folder contains the db sub folder which executes the couchbase db set up on Docker.
 
-2. Go to docker(with the help of cd command) folder.
+2.Go to docker(with the help of cd command) folder.
 
 3.Build the dockerfile.
  docker-compose build
@@ -13,6 +13,8 @@ Running Couchbase DB through docker container
  docker-compose up
 
 5.Wait till the couchbase set up and login to http://localhost:8091 with details Adminstrator/password or Devices/Devices
+
+End of couchbase setup.
 
 Devices microservice uses a couchbase database and a springboot app
 
