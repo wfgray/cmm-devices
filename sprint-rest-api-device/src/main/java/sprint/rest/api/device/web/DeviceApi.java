@@ -50,7 +50,7 @@ public interface DeviceApi {
     @RequestMapping(value = "/device",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Device> getDevices();
+    ResponseEntity<List<Device>> getDevices();
 
     
 }
