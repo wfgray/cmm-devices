@@ -15,6 +15,14 @@
         <spring.version>4.2.3.RELEASE</spring.version>
         <springfox-version>2.7.0</springfox-version>
     </properties>
+<!-- Push to Artificatory Repository -->   
+    <distributionManagement>
+       <repository>
+         <id>internal.repo</id>
+         <name>Internal repo</name>
+         <url>file:///opt/dockerSnapshot</url>
+       </repository>
+   </distributionManagement>
     <!-- If test execution is skipped then also skip test compilation -->
     <profiles>
         <profile>

@@ -60,11 +60,11 @@
          -->
         <!-- security for bcrypt support -->
         <!-- <dependency><groupId>org.springframework.security</groupId><artifactId>spring-security-core</artifactId><version>4.0.4.RELEASE</version></dependency> -->
-        <dependency>
+      <!--   <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
             <version>2.0.4.RELEASE</version>
-        </dependency>
+        </dependency> -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -147,6 +147,28 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <!--Docker maven plugin changes -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.3.4</version>
+                <executions>
+                    <execution>
+                    <id>default</id>
+                    <goals>
+                        <goal>build</goal>
+                        <goal>push</goal>
+                    </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <repository>skupoc.dev.sprint.com:5000/cmm</repository>
+                    <tag>${project.version}</tag>
+                    <buildArgs>
+                    <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
             </plugin>
             <!-- tag::plugin[] -->
             <!--  <plugin><groupId>com.spotify</groupId><artifactId>dockerfile-maven-plugin</artifactId><version>1.3.6</version><configuration><repository>${docker.image.prefix}/${project.artifactId}</repository><buildArgs><JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE></buildArgs></configuration><executions><execution><id>default</id><phase>install</phase><goals><goal>build</goal><goal>push</goal></goals></execution></executions></plugin> -->
