@@ -5,8 +5,8 @@ services:
     app:
         image: demoapp:latest
         build: 
-                context: ./app
-                dockerfile: Dockerfile    
+            context: ./app
+            dockerfile: Dockerfile    
         ports:
          - "8080:8080"
          - "4567:4567"
@@ -31,9 +31,11 @@ services:
         environment:
          - COUCHBASE_ADMINISTRATOR_USERNAME=Administrator
          - COUCHBASE_ADMINISTRATOR_PASSWORD=password
-         - COUCHBASE_BUCKET=pc
-         - COUCHBASE_BUCKET_PASSWORD=
-         - COUCHBASE_RBAC_USERNAME=pc
-         - COUCHBASE_RBAC_PASSWORD=password 
+         - COUCHBASE_BUCKET=Devices
+         - COUCHBASE_BUCKET_PASSWORD=Devices
+         - COUCHBASE_BUCKET_NAME="Devices-user"
+         - COUCHBASE_RBAC_USERNAME=Devices
+         - COUCHBASE_RBAC_PASSWORD=password
          - COUCHBASE_RBAC_NAME="admin-user" 
-         - CLUSTER_NAME=pc-cluster 
+         - CLUSTER_NAME=Devices-cluster 
+         - COUCHBASE_INDEX_URL=http://localhost:8093/query/service

@@ -1,6 +1,25 @@
-demo2
-===============
+Devices
+========
+Running Couchbase DB through docker container
+
+1.The docker folder contains the db sub folder which executes the couchbase db set up on Docker.
+
+2.Go to docker(with the help of cd command) folder.
+
+3.Build the dockerfile.
+ docker-compose build
+
+4.Run the dockerfile to install the couchbase. 
+ docker-compose up
+
+5.Wait till the couchbase set up and login to http://localhost:8091 with details Adminstrator/password or Devices/Devices
+
+End of couchbase setup.
+
 Devices microservice uses a couchbase database and a springboot app
+
+Build the project from the root
+    &#x1F539; mvn clean install -Dmaven.test.skip.exec=true
 
 ToDo 1: Modify for the devices database
 To run database only
@@ -21,15 +40,22 @@ from the left menu items choose Servers.  The Name field should represent your I
 End of ToDo 1:
 
 ToDo 2: Modify for the devices api and verify that these steps still work for building the app
-Building the demo application.  
+Building the CMM_devices application.  
 In the src/main/resources/application.properties file set the couchbase.nodes to the IP address for your couchbase db.  The application expects the database to be available to it.  If you do not have a database up and running you can use.
 
     mvn package -DskipTests
-	
+
 To run outside of docker you do need the database started
     mvn package && java -jar target/demo2-0.1.0.jar
     OR
     mvn clean package spring-boot:run
+
+To skip dockerfile plugin use "-Ddockerfile.skip"
+    mvn clean install -Dmaven.test.skip.exec=true -Ddockerfile.skip
+
+To override the environment variables defined in properties file use -D evironment variable, For example if you want to override "storage.host" variable use the following mvn command
+    mvn clean install -Dstorage.host=<hostname or ipaddress>
+   
 
 To build docker container for the app, run the build command from docker/app
      docker build -t demoapp .
@@ -52,6 +78,47 @@ ToDo 4: We have added a parent pom
     3. Update this readme to include how to build all or only parts of the app
         mvn clean compile  and mvn package as examples
 Emd of ToDo 4:
+
+Run the Web app
+To run the web app locally you have to use yarn to start the server and the react app
+Start the server 
+    yarn start
+Start the react app
+    yarn start
+
+Build and tag the Docker image:
+
+$ docker build -t web-app .
+Then, spin up the container once the build is done:
+
+$ docker run -it \
+  -v ${PWD}:/usr/src/app \
+  -v /usr/src/app/node_modules \
+  -p 3000:3000 \
+  --rm \
+  web-app
+Open your browser to http://localhost:3000/ and you should see the app. Try making a change to the App component within your code editor. You should see the app hot-reload. Kill the server once done.
+
+To Do: Add the following to docker compose
+Want to use Docker Compose? Add a docker-compose.yml file to the project root:
+
+version: '3.5'
+
+services:
+
+  sample-app:
+    container_name: sample-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+End of To Do: Add the following to docker compose
 	
 Note: I'm leaving this as it will come in handy 
     1. Run this in Jenkins Implement a nightly build against the dev branch
@@ -114,3 +181,14 @@ java -jar swagger-codegen<version>.jar generate \
   --artifact-version 0.0.1-SNAPSHOT \
   -l spring \
   -o spring-swagger-codegen-productCatalog
+
+
+  
+Business Layer:
+ 1. Moved the business logic to classes under sprint.rest.api.device.business package from Controller.(One extra layer of segregations)
+ 2. N1SQL Query moved to properties file to get all the devices. 
+ 3. Changed the method allDevices() return type to List. 
+  
+  
+  
+  

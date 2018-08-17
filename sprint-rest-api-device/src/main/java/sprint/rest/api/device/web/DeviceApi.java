@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
+import java.util.Map;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-08-14T18:59:42.272-05:00")
 
 @Api(value = "device", description = "the device API")
@@ -49,6 +50,7 @@ public interface DeviceApi {
     @RequestMapping(value = "/device",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Device> getDevices();
+    ResponseEntity<List<Device>> getDevices();
 
+    
 }
