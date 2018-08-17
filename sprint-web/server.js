@@ -3,8 +3,8 @@ var app = express();
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    if(process.argv.includes("delayresponse")) {
-        setTimeout(function(){
+    if (process.argv.includes("delayresponse")) {
+        setTimeout(function () {
             next();
         }, 2000);
     } else {
@@ -20,6 +20,14 @@ app.get('/tickets/urgent', function (req, res) {
     })
 });
 
+app.get('/tickets/devices', function (req, res) {
+    res.json({
+        "sku": "6009787",
+        "SKU": "6009787",
+        "Price": 1099.99
+    })
+});
+
 app.get('/tickets/progression', function (req, res) {
     let labels = ["Opened Tickets", "Closed Tickets"];
     let colors = ["#e74c3c", "#27ae60"];
@@ -27,7 +35,7 @@ app.get('/tickets/progression', function (req, res) {
 
     labels.forEach((label, index) => {
         let data = [];
-        for(let i = 0; i < 7; i++) {
+        for (let i = 0; i < 7; i++) {
             data.push(Math.floor(Math.random() * 10) + i);
         }
 
@@ -81,7 +89,7 @@ app.get('/stats/top', function (req, res) {
             label: "Bill",
             value: Math.floor(Math.random() * 5) + 7
         }
-    ]);    
+    ]);
 });
 
 app.get('/stats/*', function (req, res) {
@@ -95,3 +103,4 @@ app.get('/stats/*', function (req, res) {
 app.listen(3001, function () {
     console.log('Data being served from http://localhost:3001');
 });
+
