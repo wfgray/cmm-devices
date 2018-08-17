@@ -2,20 +2,20 @@
 version: '2'
 
 services:
-    # app:
-        # image: demoapp:latest
-        # build: 
-                # context: ./app
-                # dockerfile: Dockerfile    
-        # ports:
-         # - "8080:8080"
-         # - "4567:4567"
-        # links:
-         # - db:db
-        # depends_on:
-         # - db 
-        # stdin_open: true
-        # tty: true
+    app:
+        image: demoapp:latest
+        build: 
+            context: ./app
+            dockerfile: Dockerfile    
+        ports:
+         - "8080:8080"
+         - "4567:4567"
+        links:
+         - db:db
+        depends_on:
+         - db 
+        stdin_open: true
+        tty: true
         
     db:
         image: couchbase-dev:latest
