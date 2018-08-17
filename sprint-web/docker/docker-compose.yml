@@ -1,0 +1,41 @@
+
+version: '2'
+
+services:
+    app:
+        image: demoapp:latest
+        build: 
+            context: ./app
+            dockerfile: Dockerfile    
+        ports:
+         - "8080:8080"
+         - "4567:4567"
+        links:
+         - db:db
+        depends_on:
+         - db 
+        stdin_open: true
+        tty: true
+        
+    db:
+        image: couchbase-dev:latest
+        build: 
+            context: ./db
+            dockerfile: Dockerfile
+        ports:
+         - "8091:8091"
+         - "8092:8092"
+         - "8093:8093"
+         - "8094:8094"
+         - "11210:11210"
+        environment:
+         - COUCHBASE_ADMINISTRATOR_USERNAME=Administrator
+         - COUCHBASE_ADMINISTRATOR_PASSWORD=password
+         - COUCHBASE_BUCKET=Devices
+         - COUCHBASE_BUCKET_PASSWORD=Devices
+         - COUCHBASE_BUCKET_NAME="Devices-user"
+         - COUCHBASE_RBAC_USERNAME=Devices
+         - COUCHBASE_RBAC_PASSWORD=password
+         - COUCHBASE_RBAC_NAME="admin-user" 
+         - CLUSTER_NAME=Devices-cluster 
+         - COUCHBASE_INDEX_URL=http://localhost:8093/query/service

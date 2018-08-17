@@ -44,6 +44,7 @@
             <modules>
                 <module>sprint-model-device</module>
                 <module>sprint-rest-api-device</module>
+                <module>sprint-web</module>
             </modules>
         </profile>
     </profiles>
