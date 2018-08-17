@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // import the Contact component
-import Contact from "./Contact";
+import Contact from "../components/Contact";
 
 function ContactList(props) {
   return (

@@ -7,7 +7,7 @@ import GraphWidgetContainer from '../components/GraphWidgetContainer';
 
 
 import axios from "axios";
-import ContactList from "./components/ContactList";
+import ContactList from "../components/ContactList";
 import Widget from '../components/Widget';
 //2  import NumberDisplay from '../components/NumberDisplay';
 //3  import NumberWidget from '../components/NumberWidget';
@@ -62,19 +62,18 @@ class App extends Component {
                 {/* Add Widgets to display */}
                 <ListWidgetContainer href="http://localhost:3001/stats/top" heading="Top Ticket Answerers" rowspan={3} />
                 <GraphWidgetContainer href="http://localhost:3001/tickets/progression" heading="Tickets Over Time" colspan={2} rowspan={2} />
-                <NumberWidgetContainer href="http://localhost:3001/tickets/today" heading="Tickets Opened Today" />
+                <NumberWidgetContainer href="http://localhost:3001/tickets/today" heading="Tickets Opened Today" colspan={1} rowspan={1} />
                 <NumberWidgetContainer href="http://localhost:3001/tickets/urgent" heading="Tickets Marked 'Urgent'" />
                 <NumberWidgetContainer href="http://localhost:3001/stats/response" heading="4 Hour Response %" />
                 <NumberWidgetContainer href="http://localhost:3001/stats/solved" heading="7 Day Solved %" />
 
-                < device heading="Devices" />
 
-                <div>
-                    <Widget heading="Equipment" >
-                        <ContactList contacts={this.state.contacts} />
-                    </Widget>
+                <Widget colspan={2} >
+                    <h1 id="widgetHeading"> Equipments </h1>
+                    <ContactList contacts={this.state.contacts} />
+                </Widget>
 
-                </div>
+
 
             </div>
 

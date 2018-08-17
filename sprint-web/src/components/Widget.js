@@ -40,7 +40,7 @@ class Widget extends Component {
 
 // Provide default settings for when they aren't supplied
 Widget.defaultProps = {
-    heading: "Heading",
+    heading: "",
     colspan: 1,
     rowspan: 1
 }
