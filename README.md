@@ -165,3 +165,10 @@ java -jar swagger-codegen<version>.jar generate \
   --artifact-version 0.0.1-SNAPSHOT \
   -l spring \
   -o spring-swagger-codegen-productCatalog
+
+
+  
+Business Layer:
+ 1. Moved the business logic to classes under sprint.rest.api.device.business package from Controller.(One extra layer of segregations)
+ 2. N1SQL Query moved to properties file to get all the devices. 
+ 3. Changed the method allDevices() return type to List. 
