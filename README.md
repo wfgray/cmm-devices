@@ -24,15 +24,22 @@ from the left menu items choose Servers.  The Name field should represent your I
 End of ToDo 1:
 
 ToDo 2: Modify for the devices api and verify that these steps still work for building the app
-Building the demo application.  
+Building the CMM_devices application.  
 In the src/main/resources/application.properties file set the couchbase.nodes to the IP address for your couchbase db.  The application expects the database to be available to it.  If you do not have a database up and running you can use.
 
     mvn package -DskipTests
-	
+
 To run outside of docker you do need the database started
     mvn package && java -jar target/demo2-0.1.0.jar
     OR
     mvn clean package spring-boot:run
+
+To skip dockerfile plugin use "-Ddockerfile.skip"
+    mvn clean install -Dmaven.test.skip.exec=true -Ddockerfile.skip
+
+To override the environment variables defined in properties file use -D evironment variable, For example if you want to override "storage.host" variable use the following mvn command
+    mvn clean install -Dstorage.host=<hostname or ipaddress>
+   
 
 To build docker container for the app, run the build command from docker/app
      docker build -t demoapp .
