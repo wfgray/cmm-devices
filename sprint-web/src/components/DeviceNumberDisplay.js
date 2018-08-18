@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 // Import styling
 import '../styles/DeviceNumberDisplay.css';
 
@@ -11,16 +12,37 @@ class DeviceNumberDisplay extends Component {
         if (this.props.price !== undefined) {
             price =
                 <span className="price">
-                    Price of {this.props.price}
+                    has a price of {this.props.price}
                 </span>;
         }
+        
+        var arr1 = [];
+        for (var key in this.props) {
+            arr1.push(this.props[key]);
+        }
+        var arr2 = [];
+        for (var key in this.props) {
+            arr2.push(key, this.props[key]);
+        }
+        var arr3 = Object.values(this.props);
+
+        const myDevices = arr3.map((myDevice, index) =>
+        // Only do this if items have no stable IDs
+            <li key={index}>
+                {index},{myDevice}
+            </li>
+        );
 
         return (
             <div className="DeviceNumberDisplay">
                 <span className="value">
-                    {this.props.value}
+                    Device {this.props.value}
                 </span>
-                {price}
+                
+                 { } {price}
+                 
+                 {myDevices}
+            
             </div>
         );
     }

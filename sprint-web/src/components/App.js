@@ -15,7 +15,6 @@ class App extends Component {
             <div className="App">
                 {/* Add Widgets to display */}
                 <ListWidgetContainer href="http://localhost:3001/stats/top" heading="Top Ticket Answerers" rowspan={3} />
-                <NumberWidgetContainer href="http://localhost:8085/bob/bob/1.0/api/customer/01" heading="Open Ticket Total" />
                 <GraphWidgetContainer href="http://localhost:3001/tickets/progression" heading="Tickets Over Time" colspan={2} rowspan={2} />
                 <NumberWidgetContainer href="http://localhost:3001/tickets/today" heading="Tickets Opened Today" />
                 <NumberWidgetContainer href="http://localhost:3001/tickets/urgent" heading="Tickets Marked 'Urgent'" />
