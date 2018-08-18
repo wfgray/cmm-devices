@@ -22,7 +22,7 @@ class App extends Component {
                 <DevicesWidgetContainer href="http://localhost:3001/tickets/devices" heading="Devices 'Urgent work'" />
                 <NumberWidgetContainer href="http://localhost:3001/stats/response" heading="4 Hour Response %" />
                 <NumberWidgetContainer href="http://localhost:3001/stats/solved" heading="7 Day Solved %" />
-                <NumberWidgetContainer href="http://localhost:8085/bob/bob/1.0/api/customer/01" heading="From My Rest API" />
+                <DevicesWidgetContainer href="http://localhost:8080/device/Device::6009787" heading="From My Rest API" />
             </div>
         );
     }

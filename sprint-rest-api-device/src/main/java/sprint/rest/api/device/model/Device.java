@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
  */
 @ApiModel(description = "Model contains device SKU and Price")
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-08-16T18:00:25.262-05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-08-17T19:30:53.379-05:00")
 
 public class Device   {
   @JsonProperty("SKU")

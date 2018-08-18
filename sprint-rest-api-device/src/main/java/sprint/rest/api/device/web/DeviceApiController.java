@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -42,13 +43,14 @@ public class DeviceApiController implements DeviceApi {
    * @Autowired
     private Bucket loginBucket;*/
     
+    @CrossOrigin
     public ResponseEntity<Device> getDeviceBySKU(@ApiParam(value = "ID of Device to return",required=true) @PathVariable("sku") String sku) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {       
             	//JsonDocument responseData = loginBucket.get(sku);
             	JsonDocument responseData = deviceBusiness.getDeviceBySKU(sku);
-                return new ResponseEntity<Device>(objectMapper.readValue(responseData.content().toString(), Device.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<Device>(objectMapper.readValue(responseData.content().toString(), Device.class), HttpStatus.OK);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<Device>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -59,7 +61,8 @@ public class DeviceApiController implements DeviceApi {
     }
 
     
-	public ResponseEntity<List<Device>> getDevices() {
+    @CrossOrigin
+    public ResponseEntity<List<Device>> getDevices() {
         String accept = request.getHeader("Accept");
         List<Device> listRes = null;
     	if (accept != null && accept.contains("application/json")) {
