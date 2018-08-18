@@ -50,12 +50,17 @@ To run outside of docker you do need the database started
     OR
     mvn clean package spring-boot:run
 
-To skip dockerfile plugin use "-Ddockerfile.skip"
-    mvn clean install -Dmaven.test.skip.exec=true -Ddockerfile.skip
+To skip dockerfile plugin use **-Ddockerfile.skip**  
+    `mvn clean install -Dmaven.test.skip.exec=true -Ddockerfile.skip`
 
-To override the environment variables defined in properties file use -D evironment variable, For example if you want to override "storage.host" variable use the following mvn command
-    mvn clean install -Dstorage.host=<hostname or ipaddress>
-   
+To override the environment variables defined in properties file use -D evironment variable, For example if you want to override "storage.host" variable use the following mvn command  
+    `mvn clean install -Dstorage.host=<hostname or ipaddress>`
+
+To build the images from maven, run the following mvn command  
+    `mvn package`
+
+To push code to docker registry, run the following command  
+    `mvn deploy`
 
 To build docker container for the app, run the build command from docker/app
      docker build -t demoapp .
