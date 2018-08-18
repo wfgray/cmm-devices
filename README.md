@@ -62,11 +62,11 @@ To build the images from maven, run the following mvn command
 To push code to docker registry, run the following command  
     `mvn deploy`
 
-To build docker container for the app, run the build command from docker/app
-     docker build -t demoapp .
+To build docker container for the app, run the build command from docker/app  
+    `docker build -t demoapp .`
 
-To run on docker
-   docker run --name mydemoapp -p 8080:8080 -p 4567:4567 demoapp
+To run on docker  
+    `docker run --name mydemoapp -p 8080:8080 -p 4567:4567 demoapp`
 End of ToDo 2  
 
 ToDo 3: Add and modify for using docker compose
