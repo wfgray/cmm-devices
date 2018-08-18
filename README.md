@@ -1,6 +1,6 @@
-#Devices
+# Devices #
 ========
-##Running Couchbase DB through docker container
+## Running Couchbase DB through docker container ##
 
 1.The docker folder contains the db sub folder which executes the couchbase db set up on Docker.
 
