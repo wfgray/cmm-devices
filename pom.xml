@@ -43,6 +43,7 @@
                 <module>sprint-model-device</module>
                 <module>sprint-rest-api-device</module>
                 <module>sprint-db</module>
+                <module>sprint-web</module>
             </modules>
         </profile>
     </profiles>

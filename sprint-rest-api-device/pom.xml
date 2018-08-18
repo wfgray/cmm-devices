@@ -123,7 +123,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${basedir}/docker/app</outputDirectory>
+                            <outputDirectory>../docker/app</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>${project.build.directory}</directory>
