@@ -40,7 +40,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <repository>skupoc.dev.sprint.com:5000/couchbase-dev:latest</repository>
+                    <repository>skupoc.dev.sprint.com:5000/couchbase-dev</repository>
                     <tag>${project.version}</tag>
                 </configuration>
             </plugin>
