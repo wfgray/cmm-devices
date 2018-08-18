@@ -1,5 +1,5 @@
 # Devices #
-========
+
 ## Running Couchbase DB through docker container ##
 
 1.The docker folder contains the db sub folder which executes the couchbase db set up on Docker.
@@ -14,12 +14,12 @@
 
 5.Wait till the couchbase set up and login to http://localhost:8091 with details **Adminstrator/password** or **Devices/Devices**  
 
-##Devices microservice uses a couchbase database and a springboot app
+## Devices microservice uses a couchbase database and a springboot app ##
 
 Build the project from the root  
     `mvn clean install -Dmaven.test.skip.exec=true`
 
-###ToDo 1: Modify for the devices database  
+### ToDo 1: Modify for the devices database ##  
 To run database only, First start your couchbase db on docker.
 
 Couch DB - Run the docker build command from the docker/db directory  
@@ -32,7 +32,7 @@ Run command to start the docker container
 After starting the container you login to the UI here http://localhost:8091/ui/index.html  You might need to change localhost to be your docker box IP or hostname.
 from the left menu items choose Servers.  The Name field should represent your IP address.
 
-###ToDo 2: Modify for the devices api and verify that these steps still work for building the app  
+### ToDo 2: Modify for the devices api and verify that these steps still work for building the app ###  
 Building the CMM_devices application    
 In the src/main/resources/application.properties file set the couchbase.nodes to the IP address for your couchbase db. The application expects the database to be available to it.  If you do not have a database up and running you can use    
     `mvn package -DskipTests`
@@ -61,7 +61,7 @@ To build docker container for the app, run the build command from docker/app
 To run on docker  
     `docker run --name mydemoapp -p 8080:8080 -p 4567:4567 demoapp`
 
-###ToDo 3: Add and modify for using docker compose  
+### ToDo 3: Add and modify for using docker compose ###  
    
 If you want to just run the app in docker run docker compose from the /docker directory  
 ```
@@ -69,21 +69,21 @@ If you want to just run the app in docker run docker compose from the /docker di
 	docker-compose up
 ```
 
-###ToDo 4: We have added a parent pom  
+### ToDo 4: We have added a parent pom ###  
     1. Review and understand how the parent pom works.  
     2. Research how to reference items from one project in a another  
        - In this case we want to reference(copy) the model classes created in sprint-model-device in/to sprint-rest-api-devices  
     3. Update this readme to include how to build all or only parts of the app  
         mvn clean compile and mvn package as examples
 
-##Run the Web app  
+## Run the Web app ##  
 To run the web app locally you have to use yarn to start the server and the react app
 Start the server   
     `yarn start`
 Start the react app  
     `yarn start`
 
-###Build and tag the Docker image:
+### Build and tag the Docker image: ###
 
     `docker build -t web-app .`  
 
@@ -98,7 +98,7 @@ docker run -it \
 ```
 Open your browser to http://localhost:3000/ and you should see the app. Try making a change to the App component within your code editor. You should see the app hot-reload. Kill the server once done.  
 
-###To Do: Add the following to docker compose  
+### To Do: Add the following to docker compose ###  
 Want to use Docker Compose? Add a docker-compose.yml file to the project root:
 ```
 version: '3.5'
@@ -132,22 +132,22 @@ Note: I'm leaving this as it will come in handy
     4. Modify StartupPreparations.java to check for valid data in pc bucket
 Fix or verify these items
 
-#####Test command - change the IP to be the IP of your docker  
+##### Test command - change the IP to be the IP of your docker #####  
 	http://<IP>:4567/customer360/customer/customer::bblue22
 
-#####Postman Test  
+##### Postman Test #####  
     http://localhost:8080/api/customer/customer::bblue22
 
-#####To test  
+##### To test #####  
     curl localhost:8080/actuator/health
 
-#####To see Swagger  
+##### To see Swagger #####  
     http://localhost:8080/swagger-ui.html#/airport-controller
 
-#####Swagger Tools  
+##### Swagger Tools #####  
 	https://swagger.io/tools/
 
-#####Swagger Editor: API editor for designing APIs with the OpenAPI Specification  
+##### Swagger Editor: API editor for designing APIs with the OpenAPI Specification #####  
 This is a good place to model your API.  
 
 Run Swagger UI in docker
@@ -159,10 +159,10 @@ What port 80 is used? Well make one up like 8099 then chnage the 80:8080 to 80:8
 Then open URL  
 	http://localhost:8099
 
-#####Swagger UI: Visualize OpenAPI Specification definitions in an interactive UI  
+##### Swagger UI: Visualize OpenAPI Specification definitions in an interactive UI #####  
 We are using this in our demo2 - swagger branch  
 
-#####Swagger Codegen: Generate server stubs and client SDKs from OpenAPI Specification definitions
+##### Swagger Codegen: Generate server stubs and client SDKs from OpenAPI Specification definitions #####
 
 Install https://github.com/swagger-api/swagger-codegen
 ```
@@ -178,7 +178,7 @@ java -jar swagger-codegen<version>.jar generate \
 ```
 
   
-Business Layer:
+#### Business Layer: ####
  1. Moved the business logic to classes under sprint.rest.api.device.business package from Controller.(One extra layer of segregations)
  2. N1SQL Query moved to properties file to get all the devices. 
  3. Changed the method allDevices() return type to List. 
