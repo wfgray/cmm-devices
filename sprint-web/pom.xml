@@ -46,6 +46,26 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--Docker maven plugin changes -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.3.4</version>
+                <executions>
+                    <execution>
+                    <id>default</id>
+                    <goals>
+                        <goal>build</goal>
+                        <goal>push</goal>
+                    </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <repository>skupoc.dev.sprint.com:5000/sprint-web</repository>
+                    <tag>${project.version}</tag>
+                </configuration>
+            </plugin>
+
          </plugins>
     </build>
 </project>
