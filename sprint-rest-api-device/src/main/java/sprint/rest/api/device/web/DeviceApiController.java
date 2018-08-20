@@ -48,7 +48,7 @@ public class DeviceApiController implements DeviceApi {
             try {       
             	//JsonDocument responseData = loginBucket.get(sku);
             	JsonDocument responseData = deviceBusiness.getDeviceBySKU(sku);
-                return new ResponseEntity<Device>(objectMapper.readValue(responseData.content().toString(), Device.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<Device>(objectMapper.readValue(responseData.content().toString(), Device.class), HttpStatus.OK);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<Device>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -76,7 +76,7 @@ public class DeviceApiController implements DeviceApi {
 				log.error("IO Exception with Error", e);
 	            return new ResponseEntity<List<Device>>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
-        	return new ResponseEntity<List<Device>>(listRes, HttpStatus.NOT_IMPLEMENTED);            
+        	return new ResponseEntity<List<Device>>(listRes, HttpStatus.OK);            
          }
 
        return new ResponseEntity<List<Device>>(listRes, HttpStatus.NOT_IMPLEMENTED);  
