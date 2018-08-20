@@ -2,79 +2,64 @@ import React, { Component } from 'react';
 
 // Import request module
 import axios from 'axios';
+import Widget from '../components/Widget';
 
 // Import components
-import NumberWidget from '../components/NumberWidget';
+import DeviceList from "../components/DeviceList";
+
 
 class DevicesWidgetContainer extends Component {
-    constructor() {
-        super();
-
-        // Set initial state
-        this.state = {
-            loading: false,
-            min: undefined,
-            max: undefined,
-            value: undefined
-        }
-
-        // Bind function to refer to component
-        this.getData = this.getData.bind(this);
-    }
-
-    // Fetch data when the component is added
-    componentDidMount() {
-        this.getData().then(_ => {
-            // Re-fetch every minute
-            this.interval = setInterval(this.getData, 60000);
-        });
-    }
-
-    // Fetch new data
-    getData() {
-        // Tell the Widget component we're currently loading
-        this.setState({ loading: true });
-
-        // Fetch data
-        return axios.get(this.props.href)
-            .then(response => {
-                // Build a new state
-                let newState = { loading: false };
-
-                // Populate state with new data
-                if (response.data.hasOwnProperty("min")) {
-                    newState["min"] = response.data.min;
-                }
-                if (response.data.hasOwnProperty("max")) {
-                    newState["max"] = response.data.max;
-                }
-
-                if (response.data.hasOwnProperty("value")) {
-                    newState["value"] = response.data.value;
-                }
-                if (response.data.hasOwnProperty("Price")) {
-                    newState["max"] = response.data.Price;
-                }
-                if (response.data.hasOwnProperty("SKU")) {
-                    newState["value"] = response.data.SKU;
-                }
-
-                // Update state with data
-                this.setState(newState);
-            })
-            .catch(error => {
-                // At least tell the Widget component we have stopped loading
-                console.log(error);
-                this.setState({ loading: false });
+    state = {
+        devices: []
+        
+      };
+    
+      componentDidMount() {
+        axios
+          .get(this.props.href)
+          .then(response => {
+            
+           var equip = response.data;
+            console.log(equip.length);
+            
+            // create an array of contacts only with relevant data
+            var newContacts = response.data.map(c => {
+              return {
+                  id: c.id,
+                name: c.sku,
+                colors: c.color,
+                memo: c.memory,    
+                price: c.Price   
+              };
             });
-    }
-
-    render() {
+    
+            // create a new "state" object without mutating
+            // the original state object.
+            const newState = Object.assign({}, this.state, {
+                devices: newContacts
+            });
+    
+            // store the new state object in the component's state
+            this.setState(newState);
+          })
+          .then(response => 
+            {
+            var count = response.json();
+                console.log (count); }   )
+          
+          .catch(error => console.log(error));
+      }
+    
+      render() {
         return (
-            // Render the number widget
-            <NumberWidget heading={this.props.heading} colspan={this.props.colspan} rowspan={this.props.rowspan} min={this.state.min} max={this.state.max} value={this.state.value} loading={this.state.loading} />
+<Widget heading={this.props.heading} colspan={this.props.colspan} rowspan={this.props.rowspan}>
+<div>    
+            <DeviceList devices={this.state.devices} />
+
+          </div>
+       </Widget>
         );
-    }
+      }
 }
 
 // Enforce the type of props to send to this component
