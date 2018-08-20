@@ -1,7 +1,5 @@
-FROM openjdk:8-jre
-
-ENTRYPOINT ["/usr/bin/java", "-jar", "/usr/share/cmm/cmm_devices.jar"]
-
-# Add the service itself
+FROM openjdk:8-jdk-alpine
+VOLUME /tmp
 ARG JAR_FILE
-ADD target/${JAR_FILE} /usr/share/cmm/cmm_devices.jar
+ADD target/${JAR_FILE} app.jar
+CMD sleep 90 && java -Djava.security.egd=file:/dev/./urandom -jar /app.jar
