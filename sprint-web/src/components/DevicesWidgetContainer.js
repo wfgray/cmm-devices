@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 // Import components
-import NumberWidget from '../components/NumberWidget';
+import DeviceNumberWidget from '../components/DeviceNumberWidget';
 
 class DevicesWidgetContainer extends Component {
     constructor() {
@@ -15,6 +15,7 @@ class DevicesWidgetContainer extends Component {
             loading: false,
             min: undefined,
             max: undefined,
+            price: undefined,
             value: undefined
         }
 
@@ -26,7 +27,7 @@ class DevicesWidgetContainer extends Component {
     componentDidMount() {
         this.getData().then(_ => {
             // Re-fetch every minute
-            this.interval = setInterval(this.getData, 60000);
+            //this.interval = setInterval(this.getData, 60000);
         });
     }
 
@@ -53,7 +54,7 @@ class DevicesWidgetContainer extends Component {
                     newState["value"] = response.data.value;
                 }
                 if (response.data.hasOwnProperty("Price")) {
-                    newState["max"] = response.data.Price;
+                    newState["price"] = response.data.Price;
                 }
                 if (response.data.hasOwnProperty("SKU")) {
                     newState["value"] = response.data.SKU;
@@ -72,7 +73,7 @@ class DevicesWidgetContainer extends Component {
     render() {
         return (
             // Render the number widget
-            <NumberWidget heading={this.props.heading} colspan={this.props.colspan} rowspan={this.props.rowspan} min={this.state.min} max={this.state.max} value={this.state.value} loading={this.state.loading} />
+            <DeviceNumberWidget heading={this.props.heading} colspan={this.props.colspan} rowspan={this.props.rowspan} price={this.state.price} min={this.state.min} max={this.state.max} value={this.state.value} loading={this.state.loading} />
         );
     }
 }
