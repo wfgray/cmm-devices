@@ -37,5 +37,4 @@ services:
          - COUCHBASE_RBAC_USERNAME=Devices
          - COUCHBASE_RBAC_PASSWORD=password
          - COUCHBASE_RBAC_NAME="admin-user" 
-         - CLUSTER_NAME=Devices-cluster 
-         - COUCHBASE_INDEX_URL=http://localhost:8093/query/service
+         - CLUSTER_NAME=Devices-cluster
