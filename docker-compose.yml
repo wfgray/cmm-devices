@@ -1,0 +1,68 @@
+version: '3'
+services:
+  db:
+    image: 'skupoc.dev.sprint.com:5000/couchbase-dev:0.0.1-SNAPSHOT'
+    container_name: couchbasedb
+    environment:
+      - COUCHBASE_ADMINISTRATOR_USERNAME=Administrator
+      - COUCHBASE_ADMINISTRATOR_PASSWORD=password
+      - COUCHBASE_BUCKET=Devices
+      - COUCHBASE_BUCKET_PASSWORD=Devices
+      - COUCHBASE_BUCKET_NAME="Devices-user"
+      - COUCHBASE_RBAC_USERNAME=Devices
+      - COUCHBASE_RBAC_PASSWORD=password
+      - COUCHBASE_RBAC_NAME="admin-user" 
+      - CLUSTER_NAME=Devices-cluster 
+    ports:
+      - '8091:8091'
+    networks:
+     app_net:
+       ipv4_address: 192.168.50.10
+    tty: true
+    stdin_open: true
+    restart: always
+  cmm:
+    image: 'skupoc.dev.sprint.com:5000/cmm:0.0.1-SNAPSHOT'
+    container_name: cmm
+    ports:
+      - '8080:8080'
+    links:
+      - db:couchbasedb
+    networks:
+      app_net:
+        ipv4_address: 192.168.50.20
+    tty: true
+    stdin_open: true
+    restart: always
+  ui:
+    image: 'skupoc.dev.sprint.com:5000/sprint-web:0.0.1-SNAPSHOT'
+    container_name: ui
+    ports:
+      - '3000:3000'
+    links:
+      - cmm:cmm
+    networks:
+      app_net:
+        ipv4_address: 192.168.50.30
+    tty: true
+    stdin_open: true
+    restart: always
+  nginx:
+    image: 'skupoc.dev.sprint.com:5000/cmmnginx:0.0.1-SNAPSHOT'
+    container_name: sprint-nginx
+    ports:
+      - '80:80'
+    networks:
+      app_net:
+        ipv4_address: 192.168.50.40
+    tty: true
+    stdin_open: true
+    restart: always
+networks:
+  app_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        -
+          subnet: 192.168.50.0/24

@@ -16,7 +16,7 @@ class App extends Component {
         return (
             <div className="App">
                 {/* Add Widgets to display */} 
-                <DevicesWidgetContainer href="http://localhost:8080/device" heading="Devices" colspan={2} rowspan={2}/>
+                <DevicesWidgetContainer href="/device" heading="Devices" colspan={2} rowspan={2}/>
            </div> 
     );
     }
