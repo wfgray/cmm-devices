@@ -1,161 +1,178 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-
- <!--The identifier of the parent POM -->
-<!-- <parent>
-    <groupId>com.sprint.demo</groupId>
-    <artifactId>build</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-</parent> -->
-<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.0.RELEASE</version>
-	</parent>
-
-  <artifactId>sprint-rest-api-device</artifactId>
-  <packaging>jar</packaging>
-
-  <name>sprint-rest-api-device</name>
-  <url>http://maven.apache.org</url>
-
- 
-      <properties>
-       
+    <modelVersion>4.0.0</modelVersion>
+    <!--The identifier of the parent POM -->
+    <parent>
+        <groupId>com.sprint.demo</groupId>
+        <artifactId>build</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <!-- <parent><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-parent</artifactId><version>2.0.0.RELEASE</version></parent>
+ -->
+    <artifactId>sprint-rest-api-device</artifactId>
+    <packaging>jar</packaging>
+    <name>sprint-rest-api-device</name>
+    <url>http://maven.apache.org</url>
+    <properties>
+        <springframework.boot.version>2.0.4.RELEASE</springframework.boot.version>
         <java.version>1.8</java.version>
     </properties>
-
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${springframework.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
+        <!--         <dependency><groupId>org.springframework.security.oauth</groupId><artifactId>spring-security-oauth2</artifactId><version>2.3.3.RELEASE</version></dependency> -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.0.4.RELEASE</version>
         </dependency>
         <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-tomcat -->
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-tomcat</artifactId>
-    <version>2.0.4.RELEASE</version>
-</dependency>
-		
-		
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>2.0.4.RELEASE</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-tomcat -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <version>2.0.4.RELEASE</version>
+        </dependency>
         <!-- the couchbase java sdk -->
         <dependency>
             <groupId>com.couchbase.client</groupId>
             <artifactId>java-client</artifactId>
             <version>2.5.1</version>
         </dependency>
-
         <!-- tx for some data exceptions -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-        </dependency>
-        
+        <!-- <dependency><groupId>org.springframework</groupId><artifactId>spring-tx</artifactId></dependency>
+         -->
         <!-- security for bcrypt support -->
-        <!-- <dependency>
-        	<groupId>org.springframework.security</groupId>
-        	<artifactId>spring-security-core</artifactId>
-        	<version>4.0.4.RELEASE</version>
+        <!-- <dependency><groupId>org.springframework.security</groupId><artifactId>spring-security-core</artifactId><version>4.0.4.RELEASE</version></dependency> -->
+      <!--   <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+            <version>2.0.4.RELEASE</version>
         </dependency> -->
         <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-            <version>2.0.2.RELEASE</version>
-		</dependency>
-
-        <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>2.0.4.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
         <!-- json web token support -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
             <version>0.6.0</version>
         </dependency>
-		
-   <dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.3.2</version>
-		</dependency>
-
-           <!-- swagger support -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.3.2</version>
+        </dependency>
+        <!-- swagger support -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
             <version>2.8.0</version>
         </dependency>
-
-   </dependencies>
-  
-     <build>
+    </dependencies>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <delimiters>
+                        <delimiter>@</delimiter>
+                    </delimiters>
+                    <useDefaultDelimiters>false</useDefaultDelimiters>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>2.7</version>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
                 <executions>
-	                <execution>
-            <id>copy-resources</id>
-            <phase>package</phase>
-		                <goals>
-              <goal>copy-resources</goal>
-		                </goals>
-            <configuration>
-              <outputDirectory>${basedir}/docker/app</outputDirectory>
-              <resources>          
-                <resource>
-                  <directory>${project.build.directory}</directory>
-                  <includes>
-                            <include>*.jar</include>
-                        </includes>
-                </resource>
-              </resources>              
-            </configuration>            
-	                </execution>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>../docker/app</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}</directory>
+                                    <includes>
+                                        <include>*.jar</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
                 </executions>
-                
             </plugin>
-            
-       
-            <!-- tag::plugin[] -->
-           <!--  <plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${springframework.boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--Docker maven plugin changes -->
+            <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>dockerfile-maven-plugin</artifactId>
-                <version>1.3.6</version>
+                <version>1.3.4</version>
+                <executions>
+                    <execution>
+                    <id>default</id>
+                    <goals>
+                        <goal>build</goal>
+                        <goal>push</goal>
+                    </goals>
+                    </execution>
+                </executions>
                 <configuration>
-                    <repository>${docker.image.prefix}/${project.artifactId}</repository>
+                    <repository>skupoc.dev.sprint.com:5000/cmm</repository>
+                    <tag>${project.version}</tag>
                     <buildArgs>
-                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
                     </buildArgs>
                 </configuration>
-                <executions>
-	                <execution>
-		                <id>default</id>
-		                <phase>install</phase>
-		                <goals>
-			                <goal>build</goal>
-			                <goal>push</goal>
-		                </goals>
-	                </execution>
-                </executions>
-            </plugin> -->
+            </plugin>
+            <!-- tag::plugin[] -->
+            <!--  <plugin><groupId>com.spotify</groupId><artifactId>dockerfile-maven-plugin</artifactId><version>1.3.6</version><configuration><repository>${docker.image.prefix}/${project.artifactId}</repository><buildArgs><JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE></buildArgs></configuration><executions><execution><id>default</id><phase>install</phase><goals><goal>build</goal><goal>push</goal></goals></execution></executions></plugin> -->
             <!-- end::plugin[] -->
-   
-
         </plugins>
-    </build> 
- 
+    </build>
 </project>
