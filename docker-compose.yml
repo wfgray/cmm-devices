@@ -34,9 +34,9 @@ services:
     tty: true
     stdin_open: true
     restart: always
-  sprint-web:
+  ui:
     image: 'skupoc.dev.sprint.com:5000/sprint-web:0.0.1-SNAPSHOT'
-    container_name: sprint-web
+    container_name: ui
     ports:
       - '3000:3000'
     links:
@@ -44,6 +44,17 @@ services:
     networks:
       app_net:
         ipv4_address: 192.168.50.30
+    tty: true
+    stdin_open: true
+    restart: always
+  nginx:
+    image: 'skupoc.dev.sprint.com:5000/cmmnginx:0.0.1-SNAPSHOT'
+    container_name: sprint-nginx
+    ports:
+      - '80:80'
+    networks:
+      app_net:
+        ipv4_address: 192.168.50.40
     tty: true
     stdin_open: true
     restart: always
