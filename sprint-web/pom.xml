@@ -44,8 +44,74 @@
                             </resources>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>copy-web-resources1</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>../sprint-web/docker/web/src/</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/src/</directory>                                   
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-web-resources2</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>../sprint-web/docker/web/public/</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/public/</directory>                                   
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-web-resources3</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>../sprint-web/docker/web</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}</directory> 
+                                    <includes>
+                                        <include>package.json</include>
+                                    </includes>                                  
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-web-resources4</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>../sprint-web/docker/nginx</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>../sprint-nginx</directory> 
+                                    <includes>
+                                        <include>nginx.conf</include>
+                                    </includes>                                  
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
                 </executions>
-            </plugin>
+        </plugin>
             <!--Docker maven plugin changes -->
             <plugin>
                 <groupId>com.spotify</groupId>

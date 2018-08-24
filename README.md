@@ -61,12 +61,14 @@ To build docker container for the app, run the build command from docker/app
 To run on docker  
     `docker run --name mydemoapp -p 8080:8080 -p 4567:4567 demoapp`
 
-### ToDo 3: Add and modify for using docker compose ###  
+
    
-If you want to just run the app in docker run docker compose from the /docker directory  
+If you want to just run the app in docker run docker compose from the sprint-web/docker directory  
 ```
     docker-compose build
 	docker-compose up
+
+    Then go to your docker box ip address in your browser ie: http://192.168.99.100/
 ```
 
 ### ToDo 4: We have added a parent pom ###  
